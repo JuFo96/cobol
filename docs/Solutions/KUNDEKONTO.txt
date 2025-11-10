@@ -1,0 +1,25 @@
+Kunde-ID: K123456789 | Navn: Michael Nielsen
+Adresse: Vejnavn                        12A   1     Th               , 2100 Koebenhavn
+Tlf: 12345678 | Email: michael@nielsen.dk
+   Konto-ID: AC001      | Type: Loenkonto            | Saldo: 15000.50  DKK
+   Konto-ID: AC002      | Type: Opsparing            | Saldo: 55000.00  DKK
+
+Kunde-ID: K987654321 | Navn: Anna Jensenlsen
+Adresse: Andersensvej                   7B    2     Tv               , 8000 Aarhus
+Tlf: 87654321 | Email: anna.jensen@mail.dk
+   Konto-ID: AC003      | Type: Budgetkonto          | Saldo:  2000.00  DKK
+   Konto-ID: AC004      | Type: Rejsekonto           | Saldo:  7500.00  DKK
+
+Kunde-ID: K234567890 | Navn: Lars Hansenlsen
+Adresse: Sondergade                     5C    3     Th               , 5000 Odense
+Tlf: 23456789 | Email: lars.hansen@mail.dk
+   Konto-ID: AC005      | Type: Loenkonto            | Saldo:  18000.00 DKK
+
+Kunde-ID: K345678901 | Navn: Sofie Petersenn
+Adresse: Norregade                      10    1     Tv               , 9000 Aalborg
+Tlf: 34567890 | Email: sofie.petersen@mail.dk
+
+Kunde-ID: K456789012 | Navn: Mikkel Sorensen
+Adresse: Bredgade                       2     2     Th               , 4000 Roskilde
+Tlf: 45678901 | Email: mikkel.sorensen@mail.dk
+

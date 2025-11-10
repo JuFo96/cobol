@@ -1,0 +1,5 @@
+K123456789AC001     Loenkonto           15000.50 DKK
+K123456789AC002     Opsparing           55000.00 DKK
+K987654321AC003     Budgetkonto          2000.00 DKK
+K987654321AC004     Rejsekonto           7500.00 DKK
+K234567890AC005     Loenkonto            18000.00DKK

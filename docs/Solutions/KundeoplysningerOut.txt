@@ -1,0 +1,35 @@
+KUNDE-ID: K123456789
+NAVN: Michael Nielsen
+KONTO: DK0987654321         - 98765.43  DKK
+ADRESSE: Vejnavn 12A 1 Th
+BY: 2100 Koebenhavn
+KONTAKT: 12345678 michael@nielsen.dk
+
+KUNDE-ID: K987654321
+NAVN: Anna Jensen
+KONTO: DK1234567890         - 54321.99  DKK
+ADRESSE: Andersensvej 7B 2 Tv
+BY: 8000 Aarhus
+KONTAKT: 87654321 anna.jensen@mail.dk
+
+KUNDE-ID: K234567890
+NAVN: Lars Hansen
+KONTO: DK9876543210         - 43210.50  DKK
+ADRESSE: Sondergade 5C 3 Th
+BY: 5000 Odense
+KONTAKT: 23456789 lars.hansen@mail.dk
+
+KUNDE-ID: K345678901
+NAVN: Sofie Petersen
+KONTO: DK5678901230         - 12345.75  DKK
+ADRESSE: Norregade 10 1 Tv
+BY: 9000 Aalborg
+KONTAKT: 34567890 sofie.petersen@mail.dk
+
+KUNDE-ID: K456789012
+NAVN: Mikkel Sorensen
+KONTO: DK3456789010         - 78900.25  DKK
+ADRESSE: Bredgade 2 2 Th
+BY: 4000 Roskilde
+KONTAKT: 45678901 mikkel.sorensen@mail.dk
+

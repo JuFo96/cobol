@@ -1,0 +1,5 @@
+K123456789Michael B           Nielsen             DK0987654321        98765.43 DKKVejnavn                       12A  1    Th   Koebenhavn          2100DK12345678michael@nielsen.dk
+K987654321Anna                Jensen              DK1234567890        54321.99 DKKAndersensvej                  7B   2    Tv   Aarhus              8000DK87654321anna.jensen@mail.dk
+K234567890Lars                Hansen              DK9876543210        43210.50 DKKSondergade                    5C   3    Th   Odense              5000DK23456789lars.hansen@mail.dk
+K345678901Sofie               Petersen            DK5678901230        12345.75 DKKNorregade                     10   1    Tv   Aalborg             9000DK34567890sofie.petersen@mail.dk
+K456789012Mikkel              Sorensen            DK3456789010        78900.25 DKKBredgade                      2    2    Th   Roskilde            4000DK45678901mikkel.sorensen@mail.dk
