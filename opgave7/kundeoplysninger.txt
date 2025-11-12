@@ -1,5 +1,5 @@
-1111111111Lars                Hansen              Hovedgaden                    12   2    th  København           1000DK12345678lars.hansen@email.dk                              
-2222222222Miriam              Larsen              Vesterbrogade                 45   3    tv  Aarhus              8000DK87654321miriam.larsen@email.dk                            
-3333333333Boerge              Jansen              Noerregade                    7    1    mf  Odense              5000DK11223344boerge.jansen@email.dk                            
-4444444444Henning             Boergesen           Oestergade                    89   4    th  Aalborg             9000DK55667788henning.boergesen@email.dk                        
-5555555555Kaare               Henningsen          Soendergade                   23   2    tv  Esbjerg             6700DK99887766kaare.henningsen@email.dk
+1111111111Lars                Hansen              Hovedgaden                    12   2    th   Koebenhavn          1000DK12345678lars.hansen@email.dk                              
+2222222222Miriam              Larsen              Vesterbrogade                 45   3    tv   Aarhus              8000DK87654321miriam.larsen@email.dk                            
+3333333333Boerge              Jansen              Noerregade                    7    1    mf   Odense              5000DK11223344boerge.jansen@email.dk                            
+4444444444Henning             Boergesen           Oestergade                    89   4    th   Aalborg             9000DK55667788henning.boergesen@email.dk                        
+5555555555Kaare               Henningsen          Soendergade                   23   2    tv   Esbjerg             6700DK99887766kaare.henningsen@email.dk

@@ -1,15 +1,30 @@
-1111111111
-Lars Hansen
-H
-2222222222
-Miriam Larsen
-V
-3333333333
-Boerge Jansen
-N
-4444444444
-Henning Boergesen
-O
-5555555555
-Kaare Henningsen
-S
+ID: 1111111111
+Navn: Lars Hansen
+Addresse: Hovedgaden 12, 2.th
+By: 1000 Koebenhavn
+Kontakt: tlf:12345678 email:lars.hansen@email.dk
+--------------------------------------
+ID: 2222222222
+Navn: Miriam Larsen
+Addresse: Vesterbrogade 45, 3.tv
+By: 8000 Aarhus
+Kontakt: tlf:87654321 email:miriam.larsen@email.dk
+--------------------------------------
+ID: 3333333333
+Navn: Boerge Jansen
+Addresse: Noerregade 7, 1.mf
+By: 5000 Odense
+Kontakt: tlf:11223344 email:boerge.jansen@email.dk
+--------------------------------------
+ID: 4444444444
+Navn: Henning Boergesen
+Addresse: Oestergade 89, 4.th
+By: 9000 Aalborg
+Kontakt: tlf:55667788 email:henning.boergesen@email.dk
+--------------------------------------
+ID: 5555555555
+Navn: Kaare Henningsen
+Addresse: Soendergade 23, 2.tv
+By: 6700 Esbjerg
+Kontakt: tlf:99887766 email:kaare.henningsen@email.dk
+--------------------------------------
