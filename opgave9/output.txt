@@ -13,38 +13,22 @@ Navn: Miriam Larsen
 Addresse: Vesterbrogade 45, 3.tv
 By: 8000 Aarhus
 Kontakt: tlf:87654321 email:miriam.larsen@email.dk
-Konto ID: ACC0006789 Konto Type: Budgetkonto
-Balance: 002500000 DKK
-Konto ID: ACC0011111 Konto Type: Investeringskonto
-Balance: 001250075 DKK
 ------------------------------------
 ID: 3333333333
 Navn: Boerge Jansen
 Addresse: Noerregade 7, 1.mf
 By: 5000 Odense
 Kontakt: tlf:11223344 email:boerge.jansen@email.dk
-Konto ID: ACC0003456 Konto Type: Lonkonto
-Balance: 000095025 DKK
-Konto ID: ACC0007890 Konto Type: Pensionskonto
-Balance: 012500000 DKK
 ------------------------------------
 ID: 4444444444
 Navn: Henning Boergesen
 Addresse: Oestergade 89, 4.th
 By: 9000 Aalborg
 Kontakt: tlf:55667788 email:henning.boergesen@email.dk
-Konto ID: ACC0004567 Konto Type: Lonkonto
-Balance: 000410150 DKK
-Konto ID: ACC0008901 Konto Type: Opsparingskonto
-Balance: 007500025 DKK
 ------------------------------------
 ID: 5555555555
 Navn: Kaare Henningsen
 Addresse: Soendergade 23, 2.tv
 By: 6700 Esbjerg
 Kontakt: tlf:99887766 email:kaare.henningsen@email.dk
-Konto ID: ACC0012345 Konto Type: Erhvervskonto
-Balance: 000875000 DKK
-Konto ID: ACC0054321 Konto Type: Budgetkonto
-Balance: 000125050 DKK
 ------------------------------------

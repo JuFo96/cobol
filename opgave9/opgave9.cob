@@ -20,12 +20,14 @@
            
            FD konto-file.
            01 konto-info.
-               COPY "KONTOOPL.cpy".        
+               COPY "KONTOOPL.cpy".  
+ 
 
            FD output-file.
             01 output-record.
                02 navn-adr         PIC X(100).
            
+
                
        working-storage section.
            01 end-of-file PIC X value "N".
@@ -33,9 +35,31 @@
            01 full-name PIC X(40).
            01 addresse PIC X(100).
            01 temp PIC X(100).
+           01 konto-index PIC 9(2) value 0.
+           01 current-index PIC 99 value 0.
+           01 konto-array occurs 10 times.
+               copy "KONTOOPL.cpy".  
+
+
 
 
        procedure division.
+
+           open input konto-file
+           
+           perform until end-of-konto = "Y"
+               read konto-file into konto-info
+           at end 
+               move "Y" to end-of-konto
+           not at end 
+           add 1 to konto-index
+           move konto-info to konto-array(konto-index)
+           
+           end-read
+           
+           end-perform
+           close konto-file
+
            open input kunde-file
            open output output-file
 
@@ -44,32 +68,29 @@
                at end
                    move "Y" to end-of-file
                not at end
-       
            perform handle-customer
-           open input konto-file
-           move "N" to end-of-konto
-           perform until end-of-konto = "Y"
-               read konto-file into konto-info
-           at end 
-               move "Y" to end-of-konto
-           not at end 
-               
-           if customer-id in kunde-info = customer-id in konto-info
+           
+           perform varying current-index
+           from 0 by 1 
+           until current-index > length of konto-index
+           if customer-id in kunde-info = 
+           customer-id in konto-array(current-index)
                perform format-konto
                perform format-balance
-
            end-if
+           end-perform
+           move "------------------------------------" to navn-adr
+           write output-record
            end-read
            end-perform
-               close konto-file
-               move "------------------------------------" to navn-adr
-               write output-record
            
-               end-read
-               end-perform
-               close kunde-file
-               close output-file
-               stop run.
+           
+  
+           
+           close kunde-file
+           close output-file
+           
+           stop run.
            
            handle-customer.
              perform format-id
@@ -84,8 +105,8 @@
                move spaces to navn-adr
                string             
                    "ID: " 
-                   function trim(customer-id in kunde-info)
-                   into navn-adr
+                 function trim(customer-id in kunde-info)
+                 into navn-adr
                end-string
                    write output-record
            exit.
@@ -142,8 +163,10 @@
            format-konto.
            move spaces to navn-adr
            string
-               "Konto ID: " function TRIM(account-id)
-               " Konto Type: " function TRIM(account-type)
+               "Konto ID: " 
+               function TRIM(account-id in konto-array(current-index))
+               " Konto Type: " 
+               function TRIM(account-type in konto-array(current-index))
                into navn-adr
            end-string
                write output-record
@@ -152,8 +175,9 @@
            format-balance.
            move spaces to navn-adr
            string
-               "Balance: " function TRIM(balance) " "
-               function TRIM(valuta-id)
+               "Balance: " 
+               function TRIM(balance in konto-array(current-index)) " "
+               function TRIM(valuta-id in konto-array(current-index))
                into navn-adr
            end-string
                write output-record
