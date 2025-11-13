@@ -33,8 +33,7 @@
            01 end-of-file PIC X value "N".
            01 end-of-konto PIC X value "N".
            01 full-name PIC X(40).
-           01 addresse PIC X(100).
-           01 temp PIC X(100).
+           01 addresse PIC X(100).                                    
            01 konto-index PIC 9(2) value 0.
            01 current-index PIC 99 value 0.
            01 konto-array occurs 10 times.
@@ -54,15 +53,17 @@
            not at end 
            add 1 to konto-index
            move konto-info to konto-array(konto-index)
-           
            end-read
            
            end-perform
+           
            close konto-file
-
            open input kunde-file
            open output output-file
-
+           
+           
+           
+           
            perform until end-of-file = "Y"
                read kunde-file into kunde-info
                at end
@@ -72,7 +73,8 @@
            
            perform varying current-index
            from 0 by 1 
-           until current-index > length of konto-index
+           until current-index > konto-index
+           
            if customer-id in kunde-info = 
            customer-id in konto-array(current-index)
                perform format-konto
