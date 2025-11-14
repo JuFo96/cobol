@@ -72,7 +72,7 @@
            perform handle-customer
            
            perform varying current-index
-           from 0 by 1 
+           from 1 by 1 
            until current-index > konto-index
            
            if customer-id in kunde-info = 
