@@ -1,0 +1,171 @@
+1PP 5737-L11 IBM COBOL for Linux                     1.2.0                Date 11/19/2025  Time 13:21:17   Page     1               
+0Invocation parameters:
+ ADDR(64) sql
+0Options in effect:
+  NOADATA                                                                                                                            
+    ADDR(64)                                                                                                                         
+    QUOTE                                                                                                                            
+    ARITH(COMPAT)                                                                                                                    
+    BINARY(NATIVE)                                                                                                                   
+    CALLINT(NODESCRIPTOR)                                                                                                            
+    CHAR(NATIVE)                                                                                                                     
+  NOCICS                                                                                                                             
+    COLLSEQ(BINARY)                                                                                                                  
+  NOCOMPILE(S)                                                                                                                       
+  NOCURRENCY                                                                                                                         
+    DATETIME(1900,40)                                                                                                                
+  NODATEPROC                                                                                                                         
+  NODEFINE                                                                                                                           
+  NODIAGTRUNC                                                                                                                        
+  NODYNAM                                                                                                                            
+  NOEXIT                                                                                                                             
+    FLAG(I,I)                                                                                                                        
+  NOFLAGSTD                                                                                                                          
+    FLOAT(NATIVE)                                                                                                                    
+    LINECOUNT(60)                                                                                                                    
+  NOLIST                                                                                                                             
+    LSTFILE(LOCALE)                                                                                                                  
+  NOMAP                                                                                                                              
+  NOMDECK                                                                                                                            
+    NCOLLSEQ(BINARY)                                                                                                                 
+    NSYMBOL(NATIONAL)                                                                                                                
+  NONUMBER                                                                                                                           
+  NOOPTIMIZE                                                                                                                         
+    PGMNAME(LONGUPPER)                                                                                                               
+    SEPOBJ                                                                                                                           
+    SEQUENCE                                                                                                                         
+  NOSOSI                                                                                                                             
+    SOURCE                                                                                                                           
+    SPACE(1)                                                                                                                         
+    SPILL(512)                                                                                                                       
+    SQL(DB2)                                                                                                                         
+    SRCFORMAT(COMPAT)                                                                                                                
+  NOSSRANGE                                                                                                                          
+    TERM                                                                                                                             
+  NOTEST                                                                                                                             
+  NOTHREAD                                                                                                                           
+    TRUNC(STD)                                                                                                                       
+    UTF16(NATIVE)                                                                                                                    
+  NOVBREF                                                                                                                            
+  NOWSCLEAR                                                                                                                          
+    XREF(FULL)                                                                                                                       
+    YEARWINDOW(1900)                                                                                                                 
+    ZWB                                                                                                                              
+1PP 5737-L11 IBM COBOL for Linux                     1.2.0      UPLOAD-D  Date 11/19/2025  Time 13:21:17   Page     2               
+   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+0  000001                identification division.                                                 |                                  
+   000002                program-id. upload-db2.                                                  |                                  
+   000003                                                                                         |                                  
+   000004                environment division.                                                    |                                  
+   000005                                                                                         |                                  
+   000006                                                                                         |                                  
+   000007                data division.                                                           |                                  
+   000008                working-storage section.                                                 |                                  
+   000009                EXEC SQL INCLUDE SQLCA END-EXEC.                                         |                                  
+                                                                                                  |                                  
+ ==000009==> IGYPS0019-W No COBOL statement was found between periods.                            |                                  
+                                                                                                  |                                  
+   000010                01 db2inst1 PIC X(8) value "db2inst1".                                   |                                  
+   000011                01 password PIC x(8) value "password".                                   |                                  
+                                                                                                  |                                  
+ ==000011==> IGYDS6052-S Expected data-name/FILLER after level-number; found PASSWORD. Data descri|                                  
+                         ption entry ignored.                                                     |                                  
+                                                                                                  |                                  
+   000012                01 DB-CONN-STRING PIC X(100) VALUE                                       |                                  
+   000013                    "localhost:50000/testdb".                                            |                                  
+   000014                01 Program-pass-fields.                                                  |                                  
+   000015                   05 Firstnme         Pic x(30).                                        |                                  
+   000016                01  var-data pic x(20) value "hello world".                              |                                  
+   000017                procedure division.                                                      |                                  
+   000018                    display var-data                                                     |16                                
+   000019                    EXEC SQL                                                             |                                  
+   000020                     CONNECT TO TESTDB                                                   |                                  
+   000021                     USER db2inst1                                                       |                                  
+   000022                     USING :password                                                     |                                  
+   000023                    END-EXEC.                                                            |                                  
+   000024                                                                                         |                                  
+   000025                    IF SQLCODE NOT = 0                                                   |                                  
+                                                                                                  |                                  
+ ==000025==> IGYPS2121-S "SQLCODE" was not defined as a data-name.  The statement was discarded.  |                                  
+                                                                                                  |                                  
+   000026                    THEN                                                                 |                                  
+   000027      1             DISPLAY "connection failed. SQLCODE: " SQLCODE                       |                                  
+                                                                                                  |                                  
+ ==000027==> IGYPS2121-S "SQLCODE" was not defined as a data-name.  The statement was discarded.  |                                  
+                                                                                                  |                                  
+   000028      1             DISPLAY "SQLSTATE: " SQLSTATE                                        |                                  
+                                                                                                  |                                  
+ ==000028==> IGYPS2121-S "SQLSTATE" was not defined as a data-name.  The statement was discarded. |                                  
+                                                                                                  |                                  
+   000029      1             DISPLAY "SQLERRMC: " SQLERRMC                                        |                                  
+                                                                                                  |                                  
+ ==000029==> IGYPS2121-S "SQLERRMC" was not defined as a data-name.  The statement was discarded. |                                  
+                                                                                                  |                                  
+   000030      1             DISPLAY "SQLERRML: " SQLERRML                                        |                                  
+                                                                                                  |                                  
+ ==000030==> IGYPS2121-S "SQLERRML" was not defined as a data-name.  The statement was discarded. |                                  
+                                                                                                  |                                  
+   000031                ELSE                                                                     |                                  
+                                                                                                  |                                  
+ ==000031==> IGYPS0009-E "ELSE" should not begin in area "A".  It was processed as if found in are|                                  
+                         a "B".                                                                   |                                  
+                                                                                                  |                                  
+1PP 5737-L11 IBM COBOL for Linux                     1.2.0      UPLOAD-D  Date 11/19/2025  Time 13:21:17   Page     3               
+   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+0  000032      1             DISPLAY "connection successful"                                      |                                  
+   000033                END-IF.                                                                  |                                  
+                                                                                                  |                                  
+ ==000033==> IGYPS0009-E "END-IF" should not begin in area "A".  It was processed as if found in a|                                  
+                         rea "B".                                                                 |                                  
+                                                                                                  |                                  
+   000034                stop run.                                                                |                                  
+                                                                                                  |                                  
+ ==000034==> IGYPS0009-E "STOP" should not begin in area "A".  It was processed as if found in are|                                  
+                         a "B".                                                                   |                                  
+                                                                                                  |                                  
+   000035                                                                                         |                                  
+1PP 5737-L11 IBM COBOL for Linux                     1.2.0      UPLOAD-D  Date 11/19/2025  Time 13:21:17   Page     4               
+0An "M" preceding a data-name reference indicates that the data-name is modified by this reference.
+  
+  Defined   Cross-reference of data names   References                                                                               
+  
+       12   DB-CONN-STRING                                                                                                                                                                       
+       10   DB2INST1                                                                                                                                                                             
+       15   FIRSTNME                                                                                                                                                                             
+       14   PROGRAM-PASS-FIELDS                                                                                                                                                                  
+       16   VAR-DATA . . . . . . . . . . .  18                                                                                                                                                   
+1PP 5737-L11 IBM COBOL for Linux                     1.2.0      UPLOAD-D  Date 11/19/2025  Time 13:21:17   Page     5               
+0 Defined   Cross-reference of programs     References                                                                               
+  
+        2   UPLOAD-DB2                                                                                                                                                                           
+1PP 5737-L11 IBM COBOL for Linux                     1.2.0      UPLOAD-D  Date 11/19/2025  Time 13:21:17   Page     6               
+0LineID  Message code  Message text
+                                                                                                                                     
+      9  IGYPS0019-W   No COBOL statement was found between periods.
+                                                                                                                                     
+     11  IGYDS6052-S   Expected data-name/FILLER after level-number; found PASSWORD. Data description entry ignored.
+                                                                                                                                     
+     25  IGYPS2121-S   "SQLCODE" was not defined as a data-name.  The statement was discarded.
+
+                       Same message on line:     27
+                                                                                                                                     
+     28  IGYPS2121-S   "SQLSTATE" was not defined as a data-name.  The statement was discarded.
+                                                                                                                                     
+     29  IGYPS2121-S   "SQLERRMC" was not defined as a data-name.  The statement was discarded.
+                                                                                                                                     
+     30  IGYPS2121-S   "SQLERRML" was not defined as a data-name.  The statement was discarded.
+                                                                                                                                     
+     31  IGYPS0009-E   "ELSE" should not begin in area "A".  It was processed as if found in area "B".
+                                                                                                                                     
+     33  IGYPS0009-E   "END-IF" should not begin in area "A".  It was processed as if found in area "B".
+                                                                                                                                     
+     34  IGYPS0009-E   "STOP" should not begin in area "A".  It was processed as if found in area "B".
+-Messages    Total    Informational    Warning    Error    Severe    Terminating
+0Printed:      10                          1         3         6            
+-* Statistics for COBOL program UPLOAD-DB2:
+ *    Source records = 35
+ *    Data Division statements = 5
+ *    Procedure Division statements = 8
+0Locale = C.UTF.UTF-8
+0End of compilation 1,  program UPLOAD-DB2,  highest severity: Severe.
+0Return code 12

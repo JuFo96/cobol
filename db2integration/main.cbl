@@ -39,7 +39,7 @@
        01  SQLA-PROGRAM-ID.
            05 SQL-PART1 pic 9(4) COMP-5 value 172.
            05 SQL-PART2 pic X(6) value "AEAWAI".
-           05 SQL-PART3 pic X(24) value "LBH2MOLp01111 2         ".
+           05 SQL-PART3 pic X(24) value "nAifKTLp01111 2         ".
            05 SQL-PART4 pic 9(4) COMP-5 value 8.
            05 SQL-PART5 pic X(8) value "DB2INST1".
            05 SQL-PART6 pic X(120) value LOW-VALUES.
@@ -53,29 +53,27 @@
        COPY 'sqlca.cbl'.
 
                                        
-	
-      *EXEC SQL BEGIN DECLARE SECTION END-EXEC.
-       01 DB-USER PIC X(8) USAGE DISPLAY VALUE "db2inst1".
-       01 DB-PASSWORD PIC x(8) USAGE DISPLAY VALUE "password".
-       
-      *EXEC SQL END DECLARE SECTION END-EXEC
-                                             
-       
-       01  var-data pic x(20) USAGE DISPLAY value "hello world".
+       01 db2inst1 PIC X(8) value "db2inst1".
+       01 ws-password PIC x(8) value "password".
+       01 DB-CONN-STRING PIC X(100) VALUE
+           "localhost:50000/testdb".
+       01 Program-pass-fields.
+          05 Firstnme         Pic x(30).
+       01  var-data pic x(20) value "hello world".
        procedure division.
-          display var-data.
-	
+           display var-data
+           
       *EXEC SQL 
-      *CONNECT TO testdb
-      *	USER :DB-USER
-      *	USING :DB-PASSWORD
-      *	END-EXEC
+      *CONNECT TO TESTDB
+      *      USER db2inst1
+      *      USING password 
+      *     END-EXEC
            CALL "sqlgstrt" USING
               BY CONTENT SQLA-PROGRAM-ID
               BY VALUE 0
               BY REFERENCE SQLCA
-           CALL "sqlgmf" USING
-              BY VALUE 0
+      *     CALL "sqlgmf" USING
+      *        BY VALUE 0
 
            MOVE 1 TO SQL-STMT-ID 
            MOVE 3 TO SQLDSIZE 
@@ -87,7 +85,7 @@
                         SQL-STMT-ID
                         0
 
-           MOVE "testdb"
+           MOVE "TESTDB"
             TO SQL-LITERAL1
            MOVE 6 TO SQL-HOST-VAR-LENGTH
            MOVE 452 TO SQL-DATA-TYPE
@@ -103,6 +101,8 @@
             BY VALUE 0
                      0
 
+           MOVE "db2inst1"
+            TO SQL-LITERAL2
            MOVE 8 TO SQL-HOST-VAR-LENGTH
            MOVE 452 TO SQL-DATA-TYPE
            MOVE 1 TO SQLVAR-INDEX
@@ -113,10 +113,12 @@
                      SQLVAR-INDEX
                      SQL-DATA-TYPE
                      SQL-HOST-VAR-LENGTH
-            BY REFERENCE DB-USER
+            BY REFERENCE SQL-LITERAL2
             BY VALUE 0
                      0
 
+           MOVE "password"
+            TO SQL-LITERAL3
            MOVE 8 TO SQL-HOST-VAR-LENGTH
            MOVE 452 TO SQL-DATA-TYPE
            MOVE 2 TO SQLVAR-INDEX
@@ -127,7 +129,7 @@
                      SQLVAR-INDEX
                      SQL-DATA-TYPE
                      SQL-HOST-VAR-LENGTH
-            BY REFERENCE DB-PASSWORD
+            BY REFERENCE SQL-LITERAL3
             BY VALUE 0
                      0
 
@@ -145,12 +147,6 @@
 
            CALL "sqlgstop" USING
             BY VALUE 0
-                .
-
-	IF SQLCODE = 0
-		DISPLAY "connection successful"
-	ELSE
-		DISPLAY "connection failed. SQLCODE: " SQLCODE
-	END-IF.
-       stop run.
+                   .
+           stop run.
        
