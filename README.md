@@ -1,5 +1,6 @@
-# cobol
-introduction to cobol
+# Cobol
+
+I followed [this great blogpost](https://bigdanzblog.wordpress.com/2020/10/28/embedded-sql-for-gnucobol-using-ocesql/) to get stated with embedded sql in cobol, refer to it for more details.
 # SQL database integration
 SQL in cobol is executed inside EXEC blocks e.g.
 ```cobol
