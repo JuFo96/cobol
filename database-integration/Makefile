@@ -4,13 +4,13 @@ OCESQL = ocesql
 COBC = cobc
 
 # Path
-COBCPY = /home/jufo/Packages/Open-COBOL-ESQL-1.2/copy
-OCLIB = /usr/local/lib
+COBCPY = libs/Open-COBOL-ESQL-1.2/copy
+#OCLIB = /usr/local/lib # Seemingly not needed with static linking
 
 # Flags
-COBCFLAGS = -x -I$(COBCPY)
+COBCFLAGS = -x -static -I$(COBCPY)
 LDLIBS = -locesql
-COB_LDFLAGS = -Wl,-rpath,$(OCLIB)
+#COB_LDFLAGS = -Wl,-rpath,$(OCLIB) # Seemingly not needed with static linking
 
 
 # Default target
