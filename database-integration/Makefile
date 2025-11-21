@@ -2,6 +2,7 @@
 PROGRAM = helloworld
 OCESQL = ocesql
 COBC = cobc
+PSQL = psql
 
 # Path
 COBCPY = libs/Open-COBOL-ESQL-1.2/copy
@@ -25,6 +26,19 @@ $(PROGRAM): $(PROGRAM).cbl
 	COB_LDFLAGS="$(COB_LDFLAGS)" \
 	$(COBC) $(COBCFLAGS) $< $(LDLIBS) -o $@
 
+
+# Quick debugging helpers
+db-create:
+	$(PSQL) -U postgres -c "CREATE DATABASE $(DB);"
+
+
+db-drop:
+	$(PSQL) -U postgres -c "DROP DATABASE IF EXISTS $(DB);" 
+
+
+db-test:
+	$(PSQL) -U postgres -d testdb -c "SELECT 1;"
+
 # Clean up
 clean:
 	rm -f $(PROGRAM).cbl $(PROGRAM)
@@ -33,4 +47,4 @@ clean:
 run: $(PROGRAM)
 	./$(PROGRAM)
 
-.PHONY: clean run
+.PHONY: clean run db-create db-drop db-test
