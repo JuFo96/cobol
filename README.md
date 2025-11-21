@@ -5,11 +5,11 @@ SQL in cobol is executed inside EXEC blocks e.g.
 ```cobol
 EXEC SQL <SQL Instructions> END-EXEC
 ```
-On mainframes there's supposedly native support for this, however on x86-64 systems we need a *precompiler* or *coprocessor* to translate the exec sql blocks into cobol calls, this project used Open COBOL ESQL to achieve this.
+On mainframes there's supposedly native support for this, however on x86-64 systems we need a *precompiler* to translate the exec sql blocks into cobol library calls, this project used Open COBOL ESQL to achieve this.
 
 Here's an example of a precompiled EXEC SQL block the code written is commented out and replaced with a call to a open cobol esql library.
 ```cobol
-      *    EXEC SQL
+OCESQL*    EXEC SQL
 OCESQL*        DROP TABLE IF EXISTS testtable
 OCESQL*    end-exec.
 OCESQL     CALL "OCESQLExec" USING
