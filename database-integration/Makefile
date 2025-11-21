@@ -5,7 +5,7 @@ COBC = cobc
 PSQL = psql
 
 # Path
-COBCPY = libs/Open-COBOL-ESQL-1.2/copy
+COBCPY = lib/Open-COBOL-ESQL-1.2/copy
 #OCLIB = /usr/local/lib # Seemingly not needed with static linking
 
 # Flags
@@ -23,7 +23,6 @@ all: $(PROGRAM)
 
 # GnuCobol Compiler
 $(PROGRAM): $(PROGRAM).cbl
-	COB_LDFLAGS="$(COB_LDFLAGS)" \
 	$(COBC) $(COBCFLAGS) $< $(LDLIBS) -o $@
 
 

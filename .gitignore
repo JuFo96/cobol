@@ -1,0 +1,15 @@
+# Sample binary files
+database-integration/sample/INSERTTBL
+database-integration/sample/FETCHTBL
+
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+# cbl files in this project is the precompiled cobol files
+*.cbl
