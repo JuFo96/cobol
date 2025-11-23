@@ -62,10 +62,6 @@
            END-EXEC.
            
       *    END
-           CALL "SYSTEM" USING 
-           "curl -s https://etl-server.fly.dev/orders -o tmp.json"
-           END-CALL.
-      
            DISPLAY "Program Finished".
            STOP RUN.
 

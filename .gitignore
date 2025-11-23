@@ -12,4 +12,3 @@ database-integration/sample/FETCHTBL
 !*/
 
 # cbl files in this project is the precompiled cobol files
-*.cbl
