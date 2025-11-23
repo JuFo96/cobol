@@ -3,29 +3,27 @@
 
        DATA DIVISION.
        WORKING-STORAGE SECTION.
+       
+           EXEC sql include SQLCA END-EXEC.
+       
        01  TEST-DATA.
-         03 MSG PIC X(28) VALUE "Hello cobol from postgres".
+         03 MSG        PIC X(28) VALUE "Hello cobol from postges".
+         03 2nd_msg    PIC X(28) VALUE "Something something".
 
-       01  TEST-DATA-R REDEFINES TEST-DATA.
-         03  WS-TABLE OCCURS 2.
-           05 TEST-NUM             PIC S9(04).
-           05 TEST-NAME            PIC X(20).
-           05 TEST-SALARY          PIC S9(04).
+       01  message_count PIC 9 VALUE 2.
 
-       EXEC SQL BEGIN DECLARE SECTION END-EXEC.
        01  DBNAME                  PIC X(30) VALUE SPACE.
        01  USERNAME                PIC X(30) VALUE SPACE.
        01  PASSWD                  PIC X(10) VALUE SPACE.
-       01  HELLO-TABLE-VARS.
-         03 data-message           PIC X(50) VALUE SPACE.
-         03 data-status            PIC X(10) VALUE SPACE.
-       EXEC SQL END DECLARE SECTION END-EXEC.
 
-       EXEC sql include SQLCA END-EXEC.
+
+
+       
 
        PROCEDURE DIVISION.
        main-routine.
-           DISPLAY "Program started".
+           DISPLAY "***************************************************"
+           DISPLAY "Program Started".
            
            MOVE "testdb"  TO DBNAME.
            MOVE "postgres"                    TO USERNAME.
@@ -35,38 +33,51 @@
                CONNECT :USERNAME IDENTIFIED BY :PASSWD USING :DBNAME
            END-EXEC.
            IF SQLCODE NOT = ZERO PERFORM ERROR-RTN STOP RUN.
-
+           DISPLAY "Connected to database succesfully"
            EXEC SQL
-               DROP TABLE IF EXISTS testtable
-           end-exec.
+               DROP TABLE IF EXISTS messages
+           END-EXEC.
 
            IF SQLCODE NOT = ZERO PERFORM ERROR-RTN.
 
            EXEC SQL
-               CREATE TABLE testtable
+               CREATE TABLE messages
                (
-                   MSG    VARCHAR(255)
+                   message_id          SERIAL PRIMARY KEY,
+                   message_content     VARCHAR(255)
                )
-           end-exec.
-           display MSG
+           END-EXEC.
+           Display "Created table"
+
+           IF SQLCODE NOT = ZERO PERFORM ERROR-RTN.
            EXEC SQL
-               INSERT INTO testtable VALUES (:MSG)
-           end-exec.
+               INSERT INTO messages (message_content)
+               VALUES (:MSG)
+           END-EXEC.
+           
+           IF SQLCODE NOT = ZERO PERFORM ERROR-RTN.
+
+           EXEC SQL
+               INSERT INTO messages (message_content)
+               VALUES (:2nd_msg)
+           END-EXEC.
+           
            IF  SQLCODE NOT = ZERO PERFORM ERROR-RTN.
+           DISPLAY "Inserted data" 
 
            EXEC SQL COMMIT WORK END-EXEC.
            
-      *    DISCONNECT
            EXEC SQL
                DISCONNECT ALL
            END-EXEC.
            
-      *    END
+
            CALL "SYSTEM" USING 
-           "curl -s https://etl-server.fly.dev/orders -o tmp.json"
+           "curl -s https://etl-server.fly.dev/orders -o orders.json"
            END-CALL.
       
            DISPLAY "Program Finished".
+           DISPLAY "***************************************************"
            STOP RUN.
 
 

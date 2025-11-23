@@ -43,14 +43,21 @@
            IF SQLCODE NOT = ZERO PERFORM ERROR-RTN.
 
            EXEC SQL
-               CREATE TABLE testtable
+               CREATE TABLE orders
                (
-                   MSG    VARCHAR(255)
+                   customer_id    VARCHAR(255),
+                   order_date     VARCHAR(255),
+                   order_id       VARCHAR(255),
+                   order_status   VARCHAR(255),
+                   required_date  VARCHAR(255),
+                   shipped_date   VARCHAR(255),
+                   staff_name     VARCHAR(255),
+                   store          VARCHAR(255)
                )
            end-exec.
-           display MSG
+           perform varying idx 1 by 1 until idx > length
            EXEC SQL
-               INSERT INTO testtable VALUES (:MSG)
+               INSERT INTO orders VALUES (:MSG)
            end-exec.
            IF  SQLCODE NOT = ZERO PERFORM ERROR-RTN.
 
